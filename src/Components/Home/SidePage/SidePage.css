@@ -1,0 +1,56 @@
+.location{
+    box-shadow:0px 1px 4px -1px rgb(0 0 0 / 44%);
+    border-radius: 10px;
+}
+
+.location-input,.location-input:focus{
+    border:0 solid;
+  
+    
+}
+.location-input:focus{
+    border:0 solid;
+    outline-width: 0;
+}
+.date{
+    box-shadow:0px 1px 4px -1px rgb(0 0 0 / 44%);
+    border-radius: 10px;
+}
+.datepicker{
+    border:0 solid;
+    outline-width: 0;
+}
+.toggle{
+    width: 300px;
+    height: 50px;
+    border: none;
+  
+}
+.toggle:focus{
+    border:0 solid;
+    outline-width: 0;
+    box-shadow:0px 1px 4px -1px rgb(0 0 0 / 44%);
+    border-radius: 10px;
+}
+.toggle-box{
+    box-shadow:0px 1px 4px -1px rgb(0 0 0 / 44%);
+    border-radius: 10px;
+}
+input{
+    border: none;
+    width:100px
+   
+}
+.input-div{
+    box-sizing: border-box;
+    margin: auto;
+    padding:5px;
+    width: 150px;
+    box-shadow:0px 1px 4px -1px rgb(0 0 0 / 44%);
+    border-radius: 10px;
+}
+.guest{
+    box-shadow:0px 1px 4px -1px rgb(0 0 0 / 44%);
+    border-radius: 10px;
+    padding: 5px;
+}
