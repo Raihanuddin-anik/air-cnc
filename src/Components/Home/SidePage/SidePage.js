@@ -13,11 +13,14 @@ import { Link } from 'react-router-dom';
 
 const SidePage = () => {
         const [startDate, setStartDate] = useState(new Date())
-        const [endDate, setEndDate] = useState();
+        const [endDate, setEndDate] = useState()
         const [adult, setAdult] = useState(1);
         const [child, setChild] = useState(1);
         const [baby, setBaby] = useState(1);
-        const [location, setLocation] = useState(1);
+        const [location, setLocation] = useState();
+ 
+
+
   const getValue = () =>{
         const location = document.getElementById('location').value;
         setLocation(location)
@@ -32,15 +35,15 @@ const SidePage = () => {
                 location : location,
                 totalPerson : totalPerson
         }
+        var arr = JSON.parse(localStorage.getItem('user'));
+        console.log(arr)
      const handleSendData = () =>{
-        sessionStorage .setItem('user', JSON.stringify(data));
-       
+        localStorage.setItem('user', JSON.stringify(data));
        
      }
-               
-
+     
         return (
-                <div style={{ boxSizing: "border-box", width: "320px" }}>
+                <div style={{width:"100%",overflowX:"hidden"}}>
                         <h4>where do you want to go</h4>
                         <div className="location pe-5 ps-5 p-2">
                                 <h6>LOCATION</h6>

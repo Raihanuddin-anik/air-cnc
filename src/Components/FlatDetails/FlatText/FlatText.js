@@ -6,9 +6,9 @@ import { UserContext } from '../../../App';
 const FlatText = () => {
     const [flatDetails, setflatDetails] = useContext(UserContext);
     return (
-        <div  className="d-flex justify-content-evenly" style={{ width: '40rem',paddingRight:'70px' }}>
+        <div  className="row" >
         
-            <div>
+            <div className="col-md-10 col-10">
                 <h4>{flatDetails.description}</h4>
                 <b>Dhaka Bangladesh</b>
                 <p>{flatDetails.facility}</p>
@@ -50,7 +50,7 @@ const FlatText = () => {
                    PageMaker including versions of Lorem Ipsu</p>
                 
             </div>
-            <div>
+            <div className="col-md-2 col-2">
                 <h4>profile</h4>
                 
             </div>

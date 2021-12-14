@@ -20,12 +20,7 @@
     border:0 solid;
     outline-width: 0;
 }
-.toggle{
-    width: 300px;
-    height: 50px;
-    border: none;
-  
-}
+
 .toggle:focus{
     border:0 solid;
     outline-width: 0;

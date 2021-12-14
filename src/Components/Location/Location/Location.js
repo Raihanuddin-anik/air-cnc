@@ -12,7 +12,7 @@ const Location = () => {
             <div className="col-md-6">
                 <Hotel></Hotel>
             </div>
-            <div className="col-md-6">
+            <div  className="col-md-6 ">
                 <Map></Map>
             </div>
         </div>

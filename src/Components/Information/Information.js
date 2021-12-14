@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { Button, Card } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import {  Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
 import './Information.css'
@@ -23,7 +23,7 @@ const Information = () => {
                    
                 </div>
                 <div className="col-md-6" style={{ paddingLeft: '50px' }}>
-                <Card className="cart" style={{ width: '25rem' }}>
+                <Card className="cart" style={{ width: '25rem',marginTop:"20px" }}>
                     <Card.Body>
                       <div className="d-flex">
                       <Card.Title> {flatDetails.description}</Card.Title>
@@ -48,7 +48,7 @@ const Information = () => {
                             </div>
                             <br />
                             <h6>Guests </h6>
-                            <input className="p-2" style={{ width: '100%', height: '40px', borderRadius: '8px' }} value="3 Guest" />
+                            <input className="p-2" style={{ width: '100%', height: '40px', borderRadius: '8px' }} value={arr.totalPerson} />
                             <br />
                             <br /> 
                             <div className="d-flex">

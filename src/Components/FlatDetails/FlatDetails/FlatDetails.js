@@ -13,7 +13,7 @@ const FlatDetails = () => {
 
     console.log(flatDetails)
     useEffect(()=>  {
-        fetch('http://localhost:4000/homeData/'+ key)
+        fetch('https://agile-falls-82622.herokuapp.com/homeData/'+ key)
         .then(res =>res.json())
         .then(data => setflatDetails(data))
     }, [key])

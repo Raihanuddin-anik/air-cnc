@@ -12,3 +12,14 @@
     color: rgb(202, 198, 198);
 
 }
+@media screen and (max-width: 660px) {
+    .heading {
+      font-size: 15px !important;
+      line-height: 80%;
+      margin-top: 10px;
+    }
+    .img-responsive {
+      width: 100%;
+      max-width: 100px
+    }
+  }

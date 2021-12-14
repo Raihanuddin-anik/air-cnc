@@ -7,22 +7,24 @@ import Room from '../Room/Room';
 
 const Hotel = () => {
 
-const [apt, setApt] = useState([]);
+    const [apt, setApt] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:4000/products")
+        fetch("https://agile-falls-82622.herokuapp.com/products")
             .then(res => res.json()
                 .then(data => {
                     setApt(data)
                 }))
-    },[])
+    }, [])
 
 
 
 
     return (
         <div className="container">
-         
+            {apt.length == 0 && <div class="spinner-border" role="status">
+                <span class="sr-only"></span>
+            </div>}
             {
                 apt.map(room => <Room rooms={room}></Room>)
             }

@@ -58,7 +58,7 @@ const Review = () => {
                     <Link to="/information"  className="btn w-50">Agree and Continue</Link>
                 </div>
                 <div className="col-md-6" style={{ paddingLeft: '50px' }}>
-                <Card className="cart" style={{ width: '25rem' }}>
+                <Card className="cart" style={{ width: '25rem',marginTop:"20px" }}>
                     <Card.Body>
                       <div className="d-flex">
                       <Card.Title> {flatDetails.description}</Card.Title>
@@ -83,7 +83,7 @@ const Review = () => {
                             </div>
                             <br />
                             <h6>Guests </h6>
-                            <input className="p-2" style={{ width: '100%', height: '40px', borderRadius: '8px' }} value="3 Guest" />
+                            <input className="p-2" style={{ width: '100%', height: '40px', borderRadius: '8px' }} value={arr.totalPerson} />
                             <br />
                             <br /> 
                             <div className="d-flex">

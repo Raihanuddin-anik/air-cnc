@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '600px',
+  width: '450px',
   height: '600px'
 };
 
@@ -12,20 +12,22 @@ const center = {
 };
 
 const Map = () => {
-    const [locationItem, setLocationItem] = useState(null)
+  const [locationItem, setLocationItem] = useState(null)
   return (
-    <LoadScript
-      googleMapsApiKey='AIzaSyC5M_94lxlzHLTqTz5XcxGZq8eBv7jxkSM'
-    >
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={12}
+    <div>
+      <LoadScript
+        googleMapsApiKey='AIzaSyC5M_94lxlzHLTqTz5XcxGZq8eBv7jxkSM'
       >
-        { /* Child components, such as markers, info windows, etc. */ }
-    
-      </GoogleMap>
-    </LoadScript>
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={12}
+        >
+          { /* Child components, such as markers, info windows, etc. */}
+
+        </GoogleMap>
+      </LoadScript>
+    </div>
   )
 }
 

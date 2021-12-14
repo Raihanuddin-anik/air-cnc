@@ -7,19 +7,19 @@ import './FlatFooter.css'
 
 const FlatFooter = () => {
     const [flatDetails, setflatDetails] = useContext(UserContext);
-    var arr = JSON.parse(sessionStorage.getItem('user'));
+    var arr = JSON.parse(localStorage.getItem('user'));
     console.log(arr)
     const totalPrice = flatDetails.price * arr.totalPerson
    
 
     return (
 
-        <div className="row mt-5" style={{ boxSizing: "border-box" }}>
+        <div className="row mt-5">
             <div className="col-md-6">
                 <FlatText></FlatText>
             </div>
             <div className="col-md-6" style={{ paddingLeft: '50px' }}>
-                <Card className="cart" style={{ width: '25rem' }}>
+                <div className="cart" style={{ width: '25rem' }}>
                     <Card.Body>
                         <Card.Title>{flatDetails.price}$ </Card.Title>
                         <Card.Subtitle className="mb-2">5 Rating</Card.Subtitle>
@@ -41,7 +41,7 @@ const FlatFooter = () => {
                             </div>
                             <br />
                             <h6>Guests </h6>
-                            <input className="p-2" style={{ width: '100%', height: '40px', borderRadius: '8px' }} value="3 Guest" />
+                            <input className="p-2" style={{ width: '100%', height: '40px', borderRadius: '8px' }} value={arr.totalPerson} />
                             <br />
                             <br /> 
                             <div className="d-flex">
@@ -69,7 +69,7 @@ const FlatFooter = () => {
                         </Card.Text>
                         <p className="text-center">Your Won't be Charge Yet</p>
                     </Card.Body>
-                </Card>
+                </div>
             </div>
 
         </div>

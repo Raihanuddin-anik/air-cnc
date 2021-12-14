@@ -15,6 +15,7 @@ import Review from './Components/Review/Review';
 import Information from './Components/Information/Information';
 import Confirm from './Components/Confirm/Confirm';
 import { createContext, useState } from 'react';
+import Success from './Components/success/Success';
  
  export const UserContext = createContext();
 
@@ -46,6 +47,9 @@ function App() {
         </Route>
         <Route  path="/confirm">
            <Confirm></Confirm>
+        </Route>
+        <Route  path="/success">
+        <Success></Success>
         </Route>
         <Route path="*">
           <NoMatch></NoMatch>

@@ -1,13 +1,13 @@
-import react from 'react';
-
+import react, { useState } from 'react';
 import { CardElement,useElements,useStripe } from '@stripe/react-stripe-js';
-import { Button } from 'bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDonate, faMoneyBill, faMoneyBillAlt } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBillAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 
-const Payment = () => {
+const Payment = ({setPayment}) => {
+  const [showError, setShowError] = useState("");
+  console.log(showError)
   const stripe = useStripe();
   const elements = useElements();
 
@@ -34,8 +34,12 @@ const Payment = () => {
 
     if (error) {
       console.log('[error]', error);
+      setShowError(error)
+      setPayment(false)
     } else {
       console.log('[PaymentMethod]', paymentMethod);
+      setShowError("")
+      setPayment(true)
     }
   };
 
@@ -59,6 +63,8 @@ const Payment = () => {
             },
           }}
         />
+        <br/>
+        <p style={{color:"red"}}>{showError.message ? showError.message + "try with 4242424242424242": '' }</p>
         <button className="btn m-5" type="submit" disabled={!stripe}>
           Pay
       </button>
