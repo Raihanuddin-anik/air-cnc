@@ -16,25 +16,27 @@ import Information from './Components/Information/Information';
 import Confirm from './Components/Confirm/Confirm';
 import { createContext, useState } from 'react';
 import Success from './Components/success/Success';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import LogIn from './Components/LogIn/LogIn';
  
  export const UserContext = createContext();
+ export const InfoContext = createContext()
 
 function App() {
   const [flatDetails , setflatDetails] = useState({});
-  console.log(flatDetails)
+  const [UserInfo, setUserInfo] = useState({})
+  console.log(UserInfo)
+ 
   return (
     <UserContext.Provider value={[flatDetails, setflatDetails]}>
+      <InfoContext.Provider  value={[UserInfo,setUserInfo]}>
     <Router>
       <Switch>
         <Route exact path="/">
           <Home></Home>
         </Route>
-        
         <Route  path="/home">
           <Home></Home>
-        </Route>
-        <Route  path="/map">
-         <Location></Location>
         </Route>
         <Route  path="/flatdetails/:faltkey">
          <FlatDetails></FlatDetails>
@@ -44,6 +46,12 @@ function App() {
         </Route>
         <Route  path="/information">
            <Information></Information>
+        </Route>
+        <PrivateRoute  path="/map">
+        <Location></Location>
+        </PrivateRoute>
+        <Route path="/login">
+           <LogIn></LogIn>
         </Route>
         <Route  path="/confirm">
            <Confirm></Confirm>
@@ -57,6 +65,7 @@ function App() {
       </Switch>
 
     </Router>
+    </InfoContext.Provider>
     </UserContext.Provider>
   );
 }

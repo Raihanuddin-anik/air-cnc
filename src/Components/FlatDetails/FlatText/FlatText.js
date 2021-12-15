@@ -1,10 +1,14 @@
 import { faCheck, faHandsWash, faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext } from 'react';
-import { UserContext } from '../../../App';
+import { Image } from 'react-bootstrap';
+import { InfoContext, UserContext } from '../../../App';
+
 
 const FlatText = () => {
     const [flatDetails, setflatDetails] = useContext(UserContext);
+    const [userInfo, setUserInfo] = useContext(InfoContext)
+
     return (
         <div  className="row" >
         
@@ -51,7 +55,7 @@ const FlatText = () => {
                 
             </div>
             <div className="col-md-2 col-2">
-                <h4>profile</h4>
+                <Image src={userInfo.photo}/>
                 
             </div>
          

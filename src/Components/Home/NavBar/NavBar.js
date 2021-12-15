@@ -1,8 +1,12 @@
-import React from 'react';
-import { Button, Navbar, Nav, NavDropdown, Form, FormControl, Container } from 'react-bootstrap';
+import React,{useContext} from 'react';
+import { Button, Navbar, Nav, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { InfoContext } from '../../../App';
 import './NavBar.css'
 
 const NavBar = () => {
+        const [userInfo, setUserInfo] = useContext(InfoContext)
+       
         return (
                 <Container>
                         <Navbar expand="lg">
@@ -12,9 +16,8 @@ const NavBar = () => {
                                         <Nav className="ms-auto ">
                                                 <Nav.Link className="me-3" style={{color:'#010101'}} href="#home">Host your Home </Nav.Link>
                                                 <Nav.Link className="me-3" style={{color:'#010101'}} href="#link">Host your experience </Nav.Link>
-                                                <Nav.Link className="me-3" style={{color:'#010101'}} href="#link">Home</Nav.Link>
-                                                <Nav.Link className="me-3" style={{color:'#010101'}} href="#link">Log In </Nav.Link>
-                                                <button className="btn me-3" href="#link">Sing up </button>
+                                                <Link className="me-3 mt-2" style={{color:'#010101'}} to="/">Home</Link>
+                                                <button className="btn me-3"><Link to="/login">{userInfo.isSignedIn? "Sign Out":"Sign In"}</Link></button>
                                         </Nav>
                                 </Navbar.Collapse>
                         </Navbar>
