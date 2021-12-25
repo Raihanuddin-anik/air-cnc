@@ -5,7 +5,7 @@ import { InfoContext } from '../../../App';
 import './NavBar.css'
 
 const NavBar = () => {
-        const [userInfo, setUserInfo] = useContext(InfoContext)
+        const [userInfo, setUserInfo] = useContext(InfoContext);
        
         return (
                 <Container>
@@ -17,7 +17,7 @@ const NavBar = () => {
                                                 <Nav.Link className="me-3" style={{color:'#010101'}} href="#home">Host your Home </Nav.Link>
                                                 <Nav.Link className="me-3" style={{color:'#010101'}} href="#link">Host your experience </Nav.Link>
                                                 <Link className="me-3 mt-2" style={{color:'#010101'}} to="/">Home</Link>
-                                                <button className="btn me-3"><Link to="/login">{userInfo.isSignedIn? "Sign Out":"Sign In"}</Link></button>
+                                                <button className="btn me-3"><Link to="/login">{userInfo.email? "Sign Out":"Sign In"}</Link></button>
                                         </Nav>
                                 </Navbar.Collapse>
                         </Navbar>

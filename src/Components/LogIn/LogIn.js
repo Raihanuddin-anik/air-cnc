@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import firebase from 'firebase/compat/app';
-import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithPopup, GoogleAuthProvider,signOut  } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider,signOut ,createUserWithEmailAndPassword,signInWithEmailAndPassword   } from "firebase/auth";
 import firebaseConfig from '../../firebase.config';
 import { useContext } from 'react';
 import { InfoContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
-import { Navbar } from 'react-bootstrap';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./LogIn.css";
@@ -20,19 +18,7 @@ if (firebase.apps.length === 0) {
 
 
 const LogIn = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    function validateForm() {
-        return email.length > 0 && password.length > 0;
-    }
-
-    // function handleSubmit(event) {
-    //   event.preventDefault();
-    // }
-
-
-
+   
     const auth = getAuth();
     const [NewUser, setNewUser] = useState(false);
     const [user, setuser] = useState({
@@ -89,7 +75,7 @@ const LogIn = () => {
 
             })
     }
-    const handleCheckEmail = (e) => {
+    const handleCheckEmailPassword = (e) => {
 
         let isFormValid = true;
 
@@ -109,15 +95,16 @@ const LogIn = () => {
         }
     }
     const handleSubmit = (e) => {
+        
         console.log(user.email, user.password);
         if (NewUser && user.email && user.password) {
-            firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, user.email, user.password)
                 .then(res => {
                     const NewUserInfo = { ...user };
                     NewUserInfo.error = '';
                     NewUserInfo.success = true;
                     setuser(NewUserInfo);
-
                     console.log(res)
                 })
                 .catch(error => {
@@ -125,14 +112,15 @@ const LogIn = () => {
                     const NewUserInfo = { ...user };
                     NewUserInfo.success = false;
                     NewUserInfo.error = error.message;
-
+                    console.log(error.message)
                     setuser(NewUserInfo);
                     // ...
 
                 });
         }
         if (!NewUser && user.email && user.password) {
-            firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+            const auth = getAuth();
+          signInWithEmailAndPassword(auth,user.email, user.password)
                 .then(res => {
                     const NewUserInfo = { ...user };
                     NewUserInfo.error = '';
@@ -147,7 +135,6 @@ const LogIn = () => {
                     const NewUserInfo = { ...user };
                     NewUserInfo.success = false;
                     NewUserInfo.error = error.message;
-
                     setuser(NewUserInfo);
                     // ...
                 });
@@ -170,36 +157,35 @@ const LogIn = () => {
                 <label htmlFor="NewUser">New User Sign up</label>
                 <br/>
                
-                <Form onSubmit={handleSubmit}>
+                <Form >
                 
                 {NewUser &&   <Form.Group size="lg" controlId="Name">
                         <Form.Label>Name</Form.Label>
                         <Form.Control
                             type="name"
                             placeholder="Enter Your Name"
-                            onBlur={handleCheckEmail}
+                            
                         />
                     </Form.Group>
                     }
                     <Form.Group size="lg" controlId="email">
                         <Form.Label>Email</Form.Label>
                         <Form.Control
-                            autoFocus
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            name="email"
+                            required
+                            onBlur={handleCheckEmailPassword}
+                           
                         />
                     </Form.Group>
                     <Form.Group size="lg" controlId="password">
                         <Form.Label>Password</Form.Label>
                         <Form.Control
-                            type="password"
-                            onBlur={handleCheckEmail}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            name="password"
+                            onBlur={handleCheckEmailPassword}
+                            required
                         />
                     </Form.Group>
-                    <Button className="w-100 mt-2" size="lg" onClick={handleSubmit} type="submit" disabled={!validateForm()}>
+                    <Button className="w-100 mt-2" size="lg" onClick={handleSubmit} type="submit" >
                         Login
                     </Button>
                 </Form>
