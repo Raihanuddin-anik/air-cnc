@@ -10,7 +10,7 @@ const Hotel = () => {
     const [apt, setApt] = useState([]);
 
     useEffect(() => {
-        fetch("https://agile-falls-82622.herokuapp.com/products")
+        fetch("https://guarded-taiga-37234.herokuapp.com/products")
             .then(res => res.json()
                 .then(data => {
                     setApt(data)
